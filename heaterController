@@ -15,8 +15,8 @@ unsigned int rxSignal = 0;
 unsigned int powerLevel =0;
 unsigned long startTime =millis();
 float batteryVoltage;
-float batteryVoltageThreshold;
-
+float batteryVoltageThreshold = 11.5;
+ 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
