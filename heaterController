@@ -1,4 +1,5 @@
-
+// This an arduino sketch that gives 15m pulse from a RC ON/OFF switch that also resets if the battery voltage
+// drops below 10.0V
 //#define DEBUG 1
 
 #define STANDBY 1
@@ -8,12 +9,13 @@
 
 unsigned int state = STANDBY;
 unsigned int ledPin = 13;
-unsigned int duration = 20000; //ms
+unsigned int duration = 900000; //ms
 unsigned int buttonPin = 2;
 unsigned int rxSignal = 0;
 unsigned int powerLevel =0;
 unsigned long startTime =millis();
 float batteryVoltage;
+float batteryVoltageThreshold;
 
 void setup() {
   // put your setup code here, to run once:
@@ -59,7 +61,7 @@ void loop() {
 
   case POWER:
     //Serial.println("POWER");
-    if (((millis() - startTime) > duration) || (rxSignal == LOW) || (batteryVoltage < 10.0)) {
+    if (((millis() - startTime) > duration) || (rxSignal == LOW) || (batteryVoltage < batteryVoltageThreshold)) {
       state = TIMEOUT;
       powerLevel = LOW;
     }
