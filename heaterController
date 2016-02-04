@@ -5,7 +5,7 @@
 #define STANDBY 1
 #define POWER   2
 #define TIMEOUT 3
-
+//change for commit test
 
 unsigned int state = STANDBY;
 unsigned int ledPin = 13;
